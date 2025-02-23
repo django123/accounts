@@ -3,6 +3,7 @@ package io.django.accounts.dto;
 import lombok.Data;
 
 @Data
+
 public class CustomerDto {
 
     private String name;
@@ -10,4 +11,6 @@ public class CustomerDto {
     private String email;
 
     private String mobileNumber;
+
+    private AccountsDto accountsDto;
 }
