@@ -37,8 +37,6 @@ public class AccountsServiceImpl implements IAccountsService {
             throw new CustomerAlreadyExistsException("Customer already exists register with mobile number "+customerDto.getMobileNumber());
         }
 
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("anonymous");
         Customer savedCustomer = customerRepository.save(customer);
         accountsRepository.save(createNewAccount(savedCustomer));
 
@@ -83,6 +81,7 @@ public class AccountsServiceImpl implements IAccountsService {
                     () -> new ResourceNotFoundException("Customer", "CustomerID", customerId.toString())
             );
             CustomerMapper.mapToCustomer(customerDto,customer);
+
             customerRepository.save(customer);
             isUpdated = true;
         }
